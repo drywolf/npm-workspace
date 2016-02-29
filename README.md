@@ -146,6 +146,29 @@ npm-workspace install -cgp
 
 Your app is now ready for deployment.
 
+## Using nested directories in workspaces
+
+When using a workspace structure that goes beyond the first level of subdirectories, you can add all deeper nested subdirectories that contain your packages in a separate `dirs` list inside the `workspace.json` configuration.
+
+```javascript
+{
+  "dirs": [
+    "apps/app1",
+    "apps/app2",
+	"dev/tools",
+	"libs/libX",
+	"libs/libY"
+  ],
+  "links": {
+	"app1": "apps/app1",
+	"app2": "apps/app2",
+	"tools": "dev/tools",
+    "libX": "libs/libX",
+    "libY": "libs/libY"
+  }
+}
+```
+
 ## Alternative registry
 
 If you have a few dependencies that come from custom registries, you can add a `repos` map to `workspace.json`:
